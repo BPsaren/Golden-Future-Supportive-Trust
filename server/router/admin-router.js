@@ -10,37 +10,32 @@ const adminController= require("../controllers/admin-controller");
 const userMiddleware =require("../middlewares/user-auth-middleware");
 // admin are not verified that logic
 const adminMiddleware =require("../middlewares/auth-admin-middleware");
-// admin Add Products logic
-const AdminAddAllProducts= require("../controllers/Admin-Add-Products-controller");
-// admin Add meal logic
-const adminAddCategory= require("../controllers/Admin-Add-Category-controller");
 
 
-
-
-//*------------------------*
+//*-----------------------------*
 // saving Account Admin  Logic //
-//*-----------------------*
+//*-----------------------------*
 const AdminCreateAccount= require("../controllers/Admin-CreateAccount-controller");
-//const Deposit= require("../controllers/deposit");
-//const Withdraw= require("../controllers/withdraw");
-
-
-
+//for ZOD Validation
+const {ValidateSavingAccountSchema}= require("../validators/saving-account-validator");
+const validate = require("../middlewares/auth-middleware");
 
 //*-----------------------------------*
 // Create Account  maintain by Admin //
 //*-----------------------------------*
+router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,validate(ValidateSavingAccountSchema),AdminCreateAccount);
 //Customer Information Form
-router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
+//router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
 //Customer Money Deposit Logic 
 router.route("/deposit").patch(userMiddleware,adminMiddleware,adminController.Deposit);
 //Customer Money Deposit Logic 
 router.route("/withdraw").patch(userMiddleware,adminMiddleware,adminController.Withdraw);
+//Toatal Monthly Audit Logic
+//Customer Money Deposit Logic 
+router.route("/transactionhistory/:account_no").get(userMiddleware,adminMiddleware,adminController.Transactionhistory);
+router.route("/transactionhistory/delete/:id").delete(userMiddleware, adminMiddleware, adminController.deleteTransactionData);
 //Customer Money Deposit Logic 
 router.route("/findAccount").get(userMiddleware,adminMiddleware,adminController.FindAccount);
-
-
 
 //*------------------------------------------*
 // Saving Account Data Fetch,Update,Delete //
@@ -54,12 +49,8 @@ router.route("/allConsumers/update/:id").patch(userMiddleware,adminMiddleware,ad
 // delete consumer data
 router.route("/allConsumers/delete/:id").delete(userMiddleware,adminMiddleware,adminController.deleteConsumerData);
 
-
-
-
-
 //*--------------------------------------------------------*
-// Data Retrieve Logic For Users Data Fetch,Update,Delete //
+// Data Retrieve Logic For Admin Data Fetch,Update,Delete //
 //*-------------------------------------------------------*
 //Get all users data fetch
 router.route("/users").get(userMiddleware,adminMiddleware,adminController.getAllUsers);
@@ -70,15 +61,47 @@ router.route("/users/update/:id").patch(userMiddleware,adminMiddleware,adminCont
 // delete routes create
 router.route("/users/delete/:id").delete(userMiddleware,adminMiddleware,adminController.deleteUserById);
 
+
+//*-----------------------------*
+// Loan Account Admin  Logic   //
+//*-----------------------------*
+const {AdminCreateLoanAccount,LoanCredit,LoanDeposit,GetAllLoanHolders,LoanTransactionhistory,LoanMonthlyAudit}= require("../controllers/Admin-Create-Loan-Account-controller");
+//for ZOD Validation
+const {ValidateLoanAccountSchema }= require("../validators/loan-account-validator");
 //*-----------------------------------*
-// E-commerce site maintain by Admin //
+// Create Loan Account  maintain by Admin //
 //*-----------------------------------*
-//Admin Add Products
-router.route("/adminAddProducts").post(userMiddleware,adminMiddleware,AdminAddAllProducts);
-//Admin Add category Pr
-router.route("/adminAddCategory").post(userMiddleware,adminMiddleware,adminAddCategory);
+
+//Customer Loan Information Form
+router.route("/admincreateloanaccount").post(userMiddleware,adminMiddleware,validate(ValidateLoanAccountSchema),AdminCreateLoanAccount);
+//Customer Money Deposit Logic 
+router.route("/loancredit").patch(userMiddleware,adminMiddleware,LoanCredit);
+//Customer Money Deposit Logic 
+router.route("/loandeposit").patch(userMiddleware,adminMiddleware,LoanDeposit);
+//Customer Money Deposit Logic 
+router.route("/getallloanholders").get(userMiddleware,adminMiddleware,GetAllLoanHolders);
+router.route("/transactionloanhistory/:account_no").get(userMiddleware,adminMiddleware,LoanTransactionhistory);
+router.route("/loanmonthlyAudit").get(userMiddleware,adminMiddleware,LoanMonthlyAudit);
 
 
+
+
+
+
+//*-----------------------------*
+// Loan Account Admin  Logic   //
+const {AdminCreateInvestmentAccount,ProfitOnCustomerInvestment,GetInvestmentAccountHolders,TransactionInvestmentHistory}=require("../controllers/Admin-create-Investment-Account");
+//for ZOD Validation
+const {ValidateInvestmentAccountSchema}= require("../validators/invest-account-validator");
+ 
+//*-----------------------------------*
+// Create Profit Account  maintain by Admin //
+//*-----------------------------------*
+
+router.route("/createinvestmentaccount").post(userMiddleware,adminMiddleware,validate(ValidateInvestmentAccountSchema),AdminCreateInvestmentAccount);
+router.route("/profitoncustomerinvestment").patch(userMiddleware,adminMiddleware,ProfitOnCustomerInvestment);
+router.route("/getallinvestments").get(userMiddleware,adminMiddleware,GetInvestmentAccountHolders);
+router.route("/transactioninvestnhistory/:account_no").get(userMiddleware,adminMiddleware,TransactionInvestmentHistory);
 
 
 

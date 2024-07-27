@@ -3,13 +3,9 @@ const router=express.Router();
 const control = require("../controllers/auth-controller");
 const userMiddleware = require("../middlewares/user-auth-middleware");
 
-/// compare user registration  form vs validation its means signSchema
-
+// compare user registration  form vs validation its means signSchema
 const  {signupSchema,loginSchema} = require ("../validators/auth-validator");
 const validate = require("../middlewares/auth-middleware");
-
-
-
 
 
 router.route("/").get(control.home);

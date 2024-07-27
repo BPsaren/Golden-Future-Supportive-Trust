@@ -23,8 +23,29 @@ try {
 
 }
 
-
 }
 
-
 module.exports= validate;
+/*
+const validate = (schema) => async (req, res, next) => {
+  try {
+    const parseBody = await schema.parseAsync(req.body);
+    req.body = parseBody;
+    next();
+  } catch (err) {
+    console.log("Validation Errors: ", err.errors);
+    const status = 422;
+    const message = "Fill the extra details properly";
+    const extraDetails = err.errors.map(error => error.message).join(", ");
+
+    const error = {
+      status,
+      message,
+      extraDetails,
+    };
+    console.log(error);
+    next(error);
+  }
+};
+
+module.exports = validate;*/

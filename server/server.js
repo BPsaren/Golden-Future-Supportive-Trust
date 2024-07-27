@@ -17,6 +17,7 @@ const corOptions={
 };
 app.use(cors(corOptions));
 
+  
 
 //for middleware make sure not  faced by problem get for json data f
 app.use(express.json());

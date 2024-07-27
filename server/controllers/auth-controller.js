@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 //*----------------------------*
 //   Home page controller ? //   
 //*----------------------------*
-
 const home = async (req, res) => {
     try {
         res.status(200).send("Welcome to my controller home page");
@@ -14,6 +13,8 @@ const home = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }
+
+
 
 //*---------------------------*
 //  Registration controller   //
@@ -47,10 +48,11 @@ const register = async (req, res) => {
     }
 }
 
+
+
 //*---------------------------*
 //   Login controller        //
 //*---------------------------*
-
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -60,9 +62,6 @@ const login = async (req, res) => {
         if (!userExit) {
             return res.status(400).json({ message: "user does not exits" });
         }
-
-
-    
 
         const isPasswordValid = await userExit.comparePassword(password);
 
@@ -86,10 +85,8 @@ const login = async (req, res) => {
 
 
 //*---------------------------*
-//   user data get logic        //
+//   user data get logic     //
 //*---------------------------*
-
-
 const user=async(req,res)=>{
     try {
         const user_data = req.user;
