@@ -1,88 +1,128 @@
-import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+/*import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/auth";
-import { GiMeal } from "react-icons/gi";
-import { FaHome } from "react-icons/fa";
-import { FaShoppingBag } from "react-icons/fa";
-import { FaRegistered } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
-import { FaUserPlus } from "react-icons/fa";
-
-const NavBar = () => {
+import { FaHome, FaUser, FaRegistered } from "react-icons/fa";
+import { BiSolidContact } from "react-icons/bi";
+import { VscOrganization } from "react-icons/vsc";
+export const NavBar = () => {
   const { isLoggedIn } = useAuth();
+
   return (
-    <header>
-      <div >
-        <div>
-          <NavLink to="navbar"> Portfolio webpage </NavLink>
+    <header className="fixed top-0 left-0 bg-gray-800 text-white p-5 w-full z-100">
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="text-lg font-bold">
+        <h1 >Golden Future Supportive Trust</h1>
         </div>
         <nav>
-          <ul>
-            <li><NavLink to="/"> <FaHome /> Home  </NavLink></li>
-            <li><NavLink to="/about"> <FaHome /> About  </NavLink></li>
-            <li><NavLink to="/contact"> <FaHome /> Contact  </NavLink></li>
-      
+          <ul className="flex space-x-4">
+            <li>
+              <NavLink to="/" className="flex items-center space-x-2 text-white hover:text-gray-400">
+                <FaHome />
+                <span>Home</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="flex items-center space-x-2 text-white hover:text-gray-400">
+              <VscOrganization />
+                <span>About</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className="flex items-center space-x-2 text-white hover:text-gray-400">
+              <BiSolidContact />
+                <span>Contact</span>
+              </NavLink>
+            </li>
             {isLoggedIn ? (
               <li>
-                <NavLink to="/Logout">Logout</NavLink>
-
+                <NavLink to="/logout" className="flex items-center space-x-2 text-white hover:text-gray-400">
+                  <span>Logout</span>
+                </NavLink>
               </li>
-            ) : (<>
-              <li>
-                <NavLink to="/Register"> <FaRegistered />Register </NavLink>
-              </li>
-
-
-              <li>
-                <NavLink to="/Login"><FaUser /> Login  </NavLink>
-              </li>
-            </>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/register" className="flex items-center space-x-2 text-white hover:text-gray-400">
+                    <FaRegistered />
+                    <span>Register</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" className="flex items-center space-x-2 text-white hover:text-gray-400">
+                    <FaUser />
+                    <span>Login</span>
+                  </NavLink>
+                </li>
+              </>
             )}
           </ul>
-
         </nav>
-
       </div>
     </header>
-
   );
+};
+*/
 
-}
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../store/auth";
+import { FaHome, FaUser, FaRegistered } from "react-icons/fa";
+import { BiSolidContact } from "react-icons/bi";
+import { VscOrganization } from "react-icons/vsc";
+import "./NavBar.css";
 
-// const SideBar = () => {
-//   const { isLoggedIn } = useAuth();
-//   return (
-//     <header>
-//       <div className="container">
-//         <div>
-//           <NavLink to="navbar"> Portfolio webpage </NavLink>
-//         </div>
-//         <nav>
-//           <ul>
-//             <li><NavLink to="/"> <FaHome /> Home  </NavLink></li>
-//             <li><NavLink to="/about"> <FaHome /> About  </NavLink></li>
-//             <li><NavLink to="/contact"> <FaHome /> Contact  </NavLink></li>
-//             <li><NavLink to="/createaccount"> <FaHome /> Create account </NavLink></li>
-//             <li><NavLink to="/depositamount"> <FaHome /> Deposit </NavLink></li>
-//             <li><NavLink to="/withdrawamount"> <FaHome /> Withdraw  </NavLink></li>
-//             <li><NavLink to="/findaccount"> <FaHome /> Find Account  </NavLink></li>
-//             <li><NavLink to="/allconsumer"> <FaHome /> All Consumer  </NavLink></li>
-//             <li><NavLink to="/statement"> <FaHome /> Statement  </NavLink></li>
+export const NavBar = () => {
+  const { isLoggedIn } = useAuth();
 
-
-
-            
-//           </ul>
-
-//         </nav>
-
-//       </div>
-//     </header>
-
-//   );
-
-// }
-
-export default NavBar;
-
-
+  return (
+    <header className="header">
+      <div className="container">
+        <div className="brand">
+          <h1> <span>Gol</span>den Future <span>Suppor</span>tive <span>Trust</span></h1>
+        </div>
+        <nav className="navbar">
+          <ul>
+            <li>
+              <NavLink to="/" className="nav-link">
+                <FaHome />
+                <span>Home</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="nav-link">
+                <VscOrganization />
+                <span>About</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className="nav-link">
+                <BiSolidContact />
+                <span>Contact</span>
+              </NavLink>
+            </li>
+            {isLoggedIn ? (
+              <li>
+                <NavLink to="/logout" className="nav-link">
+                  <span>Logout</span>
+                </NavLink>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/register" className="nav-link">
+                    <FaRegistered />
+                    <span>Register</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" className="nav-link">
+                    <FaUser />
+                    <span>Login</span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};

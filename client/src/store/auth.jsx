@@ -12,9 +12,7 @@ export const AuthProvider = ({ children }) => {
    const[user,setUser]=useState("");
 
 
-   // usable for service page
-   const[services,setServices]=useState("");
-
+  
    // token pass for getAllUsers
    const authorizationToken =`Bearer ${token}`
 
@@ -55,46 +53,19 @@ export const AuthProvider = ({ children }) => {
       console.log({message: "Error fetching user data"})
     }
   }
-//show service info  on the service page
-
-const  getServices= async()=>{
-      try {
-        const response = await fetch("http://127.0.0.1:3000/api/data/service",{
-           method:"get",
-
-        });
-      if(response.ok){
-        const data= await response.json();
-        console.log(data.msg);
-        setServices(data.msg);
-
-      }
-
-
-      } catch (error) {
-        
-
-        console.log(`service error from ${error}`)
-      }
-
-
-}
-
-
 
 
 
 
 useEffect(()=>{
 
-   getServices();
   userAuthentication();
 },[]);
 
 
 
   return (
-    <AuthContext.Provider value={{isLoggedIn,storeTokenInLS,LogoutUser,user,services,authorizationToken}}>
+    <AuthContext.Provider value={{isLoggedIn,storeTokenInLS,LogoutUser,user,authorizationToken}}>
       {children}
     </AuthContext.Provider>
   );

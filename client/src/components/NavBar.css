@@ -1,0 +1,87 @@
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 5%; /* Reduced padding */
+ background: seagreen;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.brand h1 {
+  position: relative;
+  margin: 0;
+  font-size: 2em;
+  color:#fff;
+  z-index:1;
+  overflow: hidden;
+  font-weight: bold;
+ 
+}
+
+h1:before{
+    content:'';
+    position:relative;
+    left:0;
+    width:120%;
+    height: 100%;
+    background: linear-gradient(90deg,transparent 0%,#000 5%,#000
+    100%);
+    animation:animate 5.5s liner forwards;
+
+}
+@keyframes animate
+{
+    0% {
+        left: 110%;
+    }
+    120% {
+        left: -20%;
+    }
+}
+
+h1 span{
+    color:aqua
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px; /* Reduced gap between items */
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Slightly reduced font size */
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link span {
+  margin-left: 6px; /* Slightly reduced margin */
+}
+
+.nav-link:hover {
+  color: rgb(23, 225, 8);
+}
