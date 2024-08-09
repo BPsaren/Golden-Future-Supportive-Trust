@@ -1,11 +1,11 @@
-
-
+/* Base styles */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 5%; /* Reduced padding */
+  height: 170px;
+  padding: 10px 5%;
  background: seagreen;
   display: flex;
   justify-content: space-between;
@@ -24,36 +24,33 @@
   position: relative;
   margin: 0;
   font-size: 2em;
-  color:#fff;
-  z-index:1;
+  color: #fff;
+  z-index:10;
   overflow: hidden;
   font-weight: bold;
- 
 }
 
-h1:before{
-    content:'';
-    position:relative;
-    left:0;
-    width:120%;
-    height: 100%;
-    background: linear-gradient(90deg,transparent 0%,#000 5%,#000
-    100%);
-    animation:animate 5.5s liner forwards;
-
-}
-@keyframes animate
-{
-    0% {
-        left: 110%;
-    }
-    120% {
-        left: -20%;
-    }
+h1:before {
+  content: '';
+  position: relative;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, #000 5%, #000 100%);
+  animation: animate 5.5s linear forwards;
 }
 
-h1 span{
-    color:aqua
+@keyframes animate {
+  0% {
+    left: 110%;
+  }
+  120% {
+    left: -20%;
+  }
+}
+
+h1 span {
+  color: aqua;
 }
 
 .navbar ul {
@@ -61,7 +58,7 @@ h1 span{
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 20px; /* Reduced gap between items */
+  gap: 20px;
 }
 
 .navbar li {
@@ -71,7 +68,7 @@ h1 span{
 .nav-link {
   display: flex;
   align-items: center;
-  font-size: 16px; /* Slightly reduced font size */
+  font-size: 16px;
   color: white;
   font-weight: 500;
   text-decoration: none;
@@ -79,9 +76,50 @@ h1 span{
 }
 
 .nav-link span {
-  margin-left: 6px; /* Slightly reduced margin */
+  margin-left: 6px;
 }
 
 .nav-link:hover {
   color: rgb(23, 225, 8);
+}
+
+.navbar .active {
+  color: rgb(23, 225, 8);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hide the navbar items by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: seagreen;
+    border-radius:0px  0px 5px 5px;
+    width: 200px;
+    padding: 10px;
+  }
+
+  .navbar ul.show {
+    display: flex; /* Show the navbar items when toggled */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger icon on mobile */
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* Laptop/desktop-specific styles */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none; /* Hide hamburger icon on larger screens */
+  }
+
+  .navbar ul {
+    display: flex; /* Show navbar items by default on larger screens */
+  }
 }

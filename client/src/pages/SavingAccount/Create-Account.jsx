@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-//import { useAuth } from "../store/auth";
-import { useAuth } from '../../store/auth';
+import { useAuth } from "../../store/auth";
 import { toast } from 'react-toastify';
+import './createAccount.css';
 
 const defaultContactFormData = {
   consumer_name: '',
@@ -10,49 +10,6 @@ const defaultContactFormData = {
   mobile_no: '',
   mail_id: '',
   opening_bal: ''
-};
-
-const formStyles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  },
-  section: {
-    marginBottom: '20px',
-    padding: '15px',
-    border: '1px solid #e0e0e0',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-  },
-  formGroup: {
-    marginBottom: '15px',
-  },
-  label: {
-    marginBottom: '5px',
-    fontWeight: 'bold',
-  },
-  input: {
-    width: '100%',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '3px',
-    fontSize: '16px',
-  },
-  button: {
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '5px',
-    background: '#007BFF',
-    color: '#fff',
-    fontSize: '16px',
-    cursor: 'pointer',
-  },
 };
 
 export const CreateAccount = () => {
@@ -81,28 +38,24 @@ export const CreateAccount = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Error creating account:", errorData);
-       // toast.error(errorData.message || "Account not created");
-       toast.error(errorData.extraDetails? errorData.extraDetails:errorData.message );
+        toast.error(errorData.extraDetails ? errorData.extraDetails : errorData.message);
       } else {
         setMember(defaultContactFormData);
         const data = await response.json();
-        console.log(data);
         toast.success("Account created successfully");
       }
     } catch (error) {
-      console.error("Network error:", error);
       toast.error("Account not created");
     }
   };
 
   return (
-    <div style={formStyles.container}>
-      <h1>Create Account</h1>
-      <form onSubmit={handleSubmit}>
-        <div style={formStyles.section}>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="consumer_name" style={formStyles.label}>Consumer Name</label>
+    <div className="form-container">
+      <section className="form-section">
+        <h1 className="form-heading">Create Account</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="consumer_name" className="form-label">Consumer Name</label>
             <input
               type="text"
               name="consumer_name"
@@ -111,11 +64,11 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.consumer_name}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="address" style={formStyles.label}>Address</label>
+          <div className="form-group">
+            <label htmlFor="address" className="form-label">Address</label>
             <input
               type="text"
               name="address"
@@ -124,14 +77,11 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.address}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-        </div>
-
-        <div style={formStyles.section}>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="aadhar_no" style={formStyles.label}>Aadhar Number</label>
+          <div className="form-group">
+            <label htmlFor="aadhar_no" className="form-label">Aadhar Number</label>
             <input
               type="number"
               name="aadhar_no"
@@ -140,11 +90,11 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.aadhar_no}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="mobile_no" style={formStyles.label}>Mobile Number</label>
+          <div className="form-group">
+            <label htmlFor="mobile_no" className="form-label">Mobile Number</label>
             <input
               type="number"
               name="mobile_no"
@@ -153,14 +103,11 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.mobile_no}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-        </div>
-
-        <div style={formStyles.section}>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="mail_id" style={formStyles.label}>Email</label>
+          <div className="form-group">
+            <label htmlFor="mail_id" className="form-label">Email</label>
             <input
               type="email"
               name="mail_id"
@@ -169,11 +116,11 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.mail_id}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-          <div style={formStyles.formGroup}>
-            <label htmlFor="opening_bal" style={formStyles.label}>Opening Balance</label>
+          <div className="form-group">
+            <label htmlFor="opening_bal" className="form-label">Opening Balance</label>
             <input
               type="number"
               name="opening_bal"
@@ -182,13 +129,12 @@ export const CreateAccount = () => {
               autoComplete="off"
               value={member.opening_bal}
               onChange={handleInput}
-              style={formStyles.input}
+              className="form-input"
             />
           </div>
-        </div>
-
-        <button type="submit" style={formStyles.button}>Save</button>
-      </form>
+          <button type="submit" className="form-button">Submit</button>
+        </form>
+      </section>
     </div>
   );
 };

@@ -1,0 +1,64 @@
+.find-accounts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
+  }
+  
+  .find-accounts-section {
+    width: 100%;
+    max-width: 600px; /* Adjust based on your preference */
+    padding: 24px;
+    background-color: #ffffff; /* Equivalent to bg-white */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .find-accounts-heading {
+    font-size: 24px; /* Equivalent to text-2xl */
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .find-accounts-form {
+    margin-top: 20px;
+  }
+  
+  .find-accounts-form-group {
+    margin-bottom: 16px;
+  }
+  
+  .find-accounts-label {
+    display: block;
+    font-size: 14px; /* Equivalent to text-sm */
+    font-weight: 600;
+    color: #4b5563; /* Equivalent to text-gray-700 */
+    margin-bottom: 4px;
+  }
+  
+  .find-accounts-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e5e7eb; /* Equivalent to border-gray-300 */
+    border-radius: 4px; /* Equivalent to rounded-md */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
+  
+  .find-accounts-button {
+    background-color: #3b82f6; /* Equivalent to bg-blue-500 */
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px; /* Equivalent to rounded-md */
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .find-accounts-button:hover {
+    background-color: #2563eb; /* Equivalent to hover:bg-blue-600 */
+  }
+  

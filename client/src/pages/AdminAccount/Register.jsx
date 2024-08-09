@@ -63,7 +63,7 @@ export const Register = () => {
             <h1 className="text-2xl font-bold text-center">Registration Form</h1>
             <form onSubmit={handleSubmit} className="mt-6">
               <div className="mb-4">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Name</label>
                 <input
                   type="text"
                   name="username"

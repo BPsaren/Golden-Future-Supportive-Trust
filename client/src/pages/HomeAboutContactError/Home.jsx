@@ -53,7 +53,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="top-0 left-0 relative w-full  overflow-hidden p-12  shadow-lg">
+    <div className="top-14 left-0 relative w-full  overflow-hidden   ">
       <div className="absolute inset-0 flex items-center justify-between px-4 z-10">
         <button
           className="bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700"

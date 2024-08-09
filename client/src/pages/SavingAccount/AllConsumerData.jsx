@@ -129,9 +129,9 @@ export const AllConsumerData = () => {
       </div>
 
       <div>
-        <table style={{ borderCollapse: "collapse", width: "100%" }}>
+        <table style={{ borderCollapse: "collapse", width: "100px" }}>
           <thead>
-            <tr style={{ backgroundColor: "#f2f2f2" }}>
+            <tr style={{ backgroundColor: "seagreen" }}>
               <th style={{ padding: "12px", textAlign: "left" }}></th>
               <th style={{ padding: "12px", textAlign: "left" }}>Date</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Transaction No</th>

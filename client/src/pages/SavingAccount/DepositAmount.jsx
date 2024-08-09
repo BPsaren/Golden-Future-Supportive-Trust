@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from '../../store/auth';
 import { toast } from 'react-toastify';
+import './depositAmount.css';  // Import the external CSS
 
 const defaultContactFormData = {
   type: 'deposit',
   account_no: '',
   total_bal: '',
-  
   remarks: ''
 };
 
@@ -50,17 +50,14 @@ export const DepositAmount = () => {
   };
 
   return (
-    <div>
-      <section>
+    <div className="form-background"> {/* Applied background color class */}
+      <section className="form-section">
         <main>
           <div className="section-registration">
-            <h1>Deposit money</h1>
-            <br/>
+            <h1 className="form-heading">Deposit money</h1>
             <form onSubmit={handleSubmit}>
-             
-             
-              <div>
-                <label htmlFor="account_no"> Account Number</label>
+              <div className="form-group">
+                <label htmlFor="account_no" className="form-label">Account Number</label>
                 <input 
                   type="number" 
                   name="account_no"
@@ -70,12 +67,12 @@ export const DepositAmount = () => {
                   autoComplete="off"
                   value={member.account_no}
                   onChange={handleInput}
+                  className="form-input"
                 />
               </div>
-             
 
-              <div>
-                <label htmlFor="deposit_bal"> Deposit Amount</label>
+              <div className="form-group">
+                <label htmlFor="deposit_bal" className="form-label">Deposit Amount</label>
                 <input 
                   type="number" 
                   name="deposit_bal"
@@ -85,12 +82,11 @@ export const DepositAmount = () => {
                   autoComplete="off"
                   value={member.deposit_bal}
                   onChange={handleInput}
+                  className="form-input"
                 />
               </div>
 
-              
-              
-              <button type="submit">Save</button>
+              <button type="submit" className="form-button">Save</button>
             </form>
           </div>
         </main>

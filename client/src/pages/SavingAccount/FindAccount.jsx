@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../store/auth';
 import { toast } from 'react-toastify';
 import PDFViewerComponent from './PDFViewerComponent'; // Import the PDFViewerComponent
+import './findAccounts.css'; // Import the external CSS
 
 export const FindAccounts = () => {
   const [selectedAccount, setSelectedAccount] = useState('');
@@ -41,23 +42,23 @@ export const FindAccounts = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
-      <section className="next-container" style={{ backgroundColor: "#f3f4f6", padding: "24px", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)" }}>
-        <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>View Customer Account</h1>
-        <div className="form-control">
+    <div className="find-accounts-container">
+      <section className="find-accounts-section">
+        <h1 className="find-accounts-heading">View Customer Account</h1>
+        <div className="find-accounts-form">
           <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: "16px" }}>
-              <label htmlFor="account_no" style={{ fontSize: "14px", fontWeight: "600", color: "#4b5563", marginBottom: "4px", display: "block" }}>Account Number</label>
+            <div className="find-accounts-form-group">
+              <label htmlFor="account_no" className="find-accounts-label">Account Number</label>
               <input
                 type="number"
                 name="account_no"
                 id="account_no"
-                style={{ marginTop: "4px", width: "100%", borderRadius: "4px", border: "1px solid #e5e7eb", padding: "8px", boxShadow: "0 1px 2px rgba(0,0,0,0.05)", outline: "none" }}
+                className="find-accounts-input"
                 value={selectedAccount}
                 onChange={handleInput}
               />
             </div>
-            <button type="submit" style={{ backgroundColor: "#3b82f6", color: "#fff", fontWeight: "600", padding: "8px 16px", borderRadius: "4px", cursor: "pointer", border: "none" }}>
+            <button type="submit" className="find-accounts-button">
               Submit
             </button>
           </form>

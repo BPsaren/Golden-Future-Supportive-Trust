@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from '../../store/auth';
 import { toast } from 'react-toastify';
+import './withdrawAmount.css'; // Import the external CSS
 
 const defaultContactFormData = {
   type: 'withdraw',
@@ -51,50 +52,46 @@ export const WithdrawAmount = () => {
   };
 
   return (
-    <div>
+    <div className="withdraw-container">
       <section>
         <main>
-          <div className="section-registration">
-            <h1>Withdraw money</h1>
+          <div className="withdraw-section">
+            <h1 className="withdraw-heading">Withdraw money</h1>
             <br/>
             <form onSubmit={handleSubmit}>
-              
-             
-              <div>
-                <label htmlFor="account_no"> Account Number</label>
+              <div className="withdraw-group">
+                <label htmlFor="account_no" className="withdraw-label">Account Number</label>
                 <input 
                   type="number" 
                   name="account_no"
+                  id="account_no"
                   placeholder="Enter account number"
                   required 
                   autoComplete="off"
                   value={member.account_no}
                   onChange={handleInput}
+                  className="withdraw-input"
                 />
               </div>
-             
-
-              <div>
-                <label htmlFor="withdraw_bal"> Withdraw amount</label>
+              <div className="withdraw-group">
+                <label htmlFor="withdraw_bal" className="withdraw-label">Withdraw Amount</label>
                 <input 
                   type="number" 
                   name="withdraw_bal"
+                  id="withdraw_bal"
                   placeholder="Withdraw amount"
                   required 
                   autoComplete="off"
                   value={member.withdraw_bal}
                   onChange={handleInput}
+                  className="withdraw-input"
                 />
               </div>
-
-              
-             
-              
-              <button type="submit">Withdraw</button>
+              <button type="submit" className="withdraw-button">Withdraw</button>
             </form>
           </div>
         </main>
       </section>
     </div>
   );
-}
+};

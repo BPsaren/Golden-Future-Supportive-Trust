@@ -21,7 +21,7 @@ import { Error } from "./pages/HomeAboutContactError/Error";
 import { Login } from "./pages/AdminAccount/Login";
 import { Register } from "./pages/AdminAccount/Register";
 import { Logout } from "./pages/AdminAccount/Logout";
-import {AdminLayout } from "./components/Layout/Admin-layout";
+import {AdminLayout } from "./components/Layout/Adminlayout";
 import { AdminUsers } from "./pages/AdminAccount/Admin-Users";
 import { AdminUpdate } from "./pages/AdminAccount/Admin-Update";
 
